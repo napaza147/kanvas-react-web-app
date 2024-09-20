@@ -8,6 +8,7 @@ import Lab3 from "./Lab3";
 export default function Labs() {
   return (
     <div>
+      <h2>Name: Nestor Ivan Apaza Mamani</h2>
       <h1>Labs</h1>
       <TOC />
       <Routes>

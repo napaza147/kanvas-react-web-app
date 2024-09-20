@@ -1,28 +1,57 @@
-export default function Assignment() {
+import { Link } from "react-router-dom";
+
+export default function Assignments() {
   return (
-    <div>
-      {/* Implement Collapse All button, View Progress button, etc. */}
-      <ul id="wd-modules">
-        <li className="wd-module">
-          <div className="wd-title">Week 1</div>
-          <ul className="wd-lessons">
-            <li className="wd-lesson">
-              <span className="wd-title">LEARNING OBJECTIVES</span>
-              <ul className="wd-content">
-                <li className="wd-content-item">Introduction to the course</li>
-                <li className="wd-content-item">Learn what is Web Development</li>
-              </ul>
-            </li>
-          </ul>
+    <div id="wd-assignments">
+      <input id="wd-search-assignment"
+             placeholder="Search for Assignments" />
+      <button id="wd-add-assignment-group">+ Group</button>
+      <button id="wd-add-assignment">+ Assignment</button>
+      <h3 id="wd-assignments-title">
+        ASSIGNMENTS 40% of Total <button>+</button>
+      </h3>
+      <ul id="wd-assignment-list">
+        <li className="wd-assignment-list-item">
+          <a className="wd-assignment-link"
+            href="#/Kanbas/Courses/1234/Assignments/124">
+            A1 - ENV + HTML
+          </a>
+
+          <div>
+            <span>Multiple Modules | </span>
+            <strong>Not available until</strong> May 6 at 12:00am | 
+            <strong>Due</strong> May 13 at 11:59pm | 
+            <span>100 pts</span>
+          </div>
         </li>
-        <li className="wd-module">
-          <div className="wd-title">Week 2</div>
-          <ul className="wd-lessons">
-            <li className="wd-lesson">
-              <span className="wd-title">LEARNING OBJECTIVES</span>
-            </li>
-          </ul>
+
+
+        <li className="wd-assignment-list-item">
+          <a className="wd-assignment-link"
+            href="#/Kanbas/Courses/1234/Assignments/124">
+            A2 - CSS + BOOTSTRAP
+          </a>
+          <div>
+            <span>Multiple Modules | </span>
+            <strong>Not available until</strong> May 13 at 12:00am | 
+            <strong>Due</strong> May 20 at 11:59pm | 
+            <span>100 pts</span>
+          </div>
         </li>
+
+        <li className="wd-assignment-list-item">
+          <a className="wd-assignment-link"
+            href="#/Kanbas/Courses/1234/Assignments/125">
+            A3 - JAVASCRIPT + REACT
+          </a>
+          <div>
+            <span>Multiple Modules | </span>
+            <strong>Not available until</strong> May 20 at 12:00am | 
+            <strong>Due</strong> May 2 at 11:59pm | 
+            <span>100 pts</span>
+          </div>
+        </li>
+
       </ul>
     </div>
 );}

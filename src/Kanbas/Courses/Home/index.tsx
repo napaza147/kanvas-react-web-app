@@ -4,13 +4,11 @@ export default function Home() {
   return (
     <table id="wd-home">
       <tr>
-        <td valign="top">
-          {" "}
-          <Modules />{" "}
+      <td valign="top" style={{ width: '60%'}}>
+          <Modules />
         </td>
         <td valign="top">
-          {" "}
-          <CourseStatus />{" "}
+          <CourseStatus />
         </td>
       </tr>
     </table>
