@@ -72,6 +72,10 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
     border: none;
   }
 
+#wd-account-navigation .list-group-item {
+    border: none;
+}
+  
 
 .container {
     display: flex;
@@ -105,9 +109,4 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
     #wd-home .course-status {
       display: none; 
     }
-}
-
-
-.custom-label {
-    margin-left: 0px; /* Adjust the value as needed */
 }
