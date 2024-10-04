@@ -9,7 +9,7 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
 
 
 .list-group.wd > .list-group-item.active {
-    color: black;
+    color: black !important;
     background-color: transparent;
     border-left: 3px solid black !important;
 }
@@ -66,4 +66,48 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
     margin-left: 30px;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+#wd-courses-navigation .list-group-item {
+    border: none;
+  }
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#wd-modules-controls {
+    margin: 0 30px; 
+}
+
+#wd-home {
+    margin-left: 0px;
+}
+
+#wd-modules {
+    margin: 0 30px;
+}
+
+#wd-assignments-container {
+    margin: 0 30px; 
+}
+
+
+#wd-people-table {
+    margin: 0 30px;
+    font-size: 1rem;
+
+}
+
+@media (max-width: 1000px) {
+    #wd-home .course-status {
+      display: none; 
+    }
+}
+
+
+.custom-label {
+    margin-left: 0px; /* Adjust the value as needed */
 }

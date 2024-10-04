@@ -8,7 +8,7 @@ export default function CoursesNavigation() {
       <Link 
         to="/Kanbas/Courses/1234/Home" 
         id="wd-course-home-link"
-        className={`list-group-item ${location.pathname === "/Kanbas/Courses/1234/Home" ? 'active' : ''}`} 
+        className={`list-group-item text-danger ${location.pathname === "/Kanbas/Courses/1234/Home" ? 'active' : ''}`} 
       >
         Home
       </Link>
