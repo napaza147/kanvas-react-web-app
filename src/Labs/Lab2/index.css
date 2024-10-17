@@ -4,6 +4,19 @@
  }
 */
 
+<style>
+      .padding {
+        border: 1px green solid;
+        border-top: 10px red solid;
+        border-left: 20px blue solid;
+        padding-left: 30px;
+        padding-top: 40px;
+        background-color: yellow;
+      }
+    </style>
+
+    
+
 p#wd-id-selector-1 {
     background-color: red;
     color: white;

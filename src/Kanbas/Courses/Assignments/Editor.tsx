@@ -1,7 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Padding from '../../../Labs/Lab2/Padding';
+import { useParams, Link } from 'react-router-dom';
+import * as db from "../../Database";
 
 export default function AssignmentEditor() {
+    const { cid, aid } = useParams();
+    
+    const assignment = db.assignments.find(assign => assign._id === aid);
+
+    if (!assignment) {
+        return <div className="container mt-4">Assignment not found.</div>;
+    }
+
     return (
         <div id="wd-assignments-editor" className="container mt-4">
             <div className="d-flex flex-column w-100">
@@ -10,7 +19,7 @@ export default function AssignmentEditor() {
                         <label htmlFor="wd-name" className="form-label"><strong>Assignment Name</strong></label>
                     </div>
                     <div className="col-8">
-                        <input id="wd-name" className="form-control" defaultValue="A1 - ENV + HTML" />
+                        <input id="wd-name" className="form-control" defaultValue={assignment.title} />
                     </div>
                 </div>
 
@@ -117,8 +126,8 @@ export default function AssignmentEditor() {
                 </div>
 
                 <div className="text-end mt-3">
-                    <button className="btn btn-secondary me-2">Cancel</button>
-                    <button className="btn btn-primary">Save</button>
+                    <Link to={`/Kanbas/Courses/${cid}/Assignments`} className="btn btn-secondary me-2">Cancel</Link>
+                    <Link to={`/Kanbas/Courses/${cid}/Assignments`} className="btn btn-primary">Save</Link>
                 </div>
             </div>
         </div>

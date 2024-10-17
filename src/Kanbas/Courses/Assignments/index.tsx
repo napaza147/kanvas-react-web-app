@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BsGripVertical, BsSearch } from 'react-icons/bs';
 import { FaRegFileAlt, FaCaretDown } from 'react-icons/fa';
 import LessonControlButtons from '../Modules/LessonControlButtons';
 import PercentageIndicator from "./PercentageIndicator";
+import * as db from "../../Database";
 
 export default function Assignments() {
+  const { cid } = useParams();
+  const assignments = db.assignments;
+
   return (
     <div id="wd-assignments-container" className="d-flex flex-column">
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -43,78 +47,41 @@ export default function Assignments() {
             </div>
           </li>
 
-          {/* Assignment Items */}
-          <li className="wd-lesson list-group-item p-3 ps-1 d-flex justify-content-between align-items-start">
-            <div className="d-flex align-items-start">
-              <BsGripVertical className="me-2 fs-3" />
-              <FaRegFileAlt className="text-success me-2 fs-4" />
-              <div className="d-flex flex-column">
-                <Link
-                  className="wd-assignment-link"
-                  to="/Kanbas/Courses/1234/Assignments/124"
-                  style={{ fontWeight: 'bold', color: 'black', fontSize: '1rem', textDecoration: 'none' }}
-                >
-                  A1
-                </Link>
-                <div style={{ whiteSpace: 'normal', overflow: 'hidden', fontSize: '0.9rem' }}>
-                  <span className="text-danger">Multiple Modules </span>
-                  <strong>| Not available until</strong> May 6 at 12:00am | 
-                  <strong>Due</strong> May 13 at 11:59pm | 
-                  <span>100 pts</span>
-                </div>
-              </div>
-            </div>
-            <LessonControlButtons />
-          </li>
-
-          {/* Additional Assignment Items */}
-          <li className="wd-lesson list-group-item p-3 ps-1 d-flex justify-content-between align-items-start">
-            <div className="d-flex align-items-start">
-              <BsGripVertical className="me-2 fs-3" />
-              <FaRegFileAlt className="text-success me-2 fs-4" />
-              <div className="d-flex flex-column">
-                <Link
-                  className="wd-assignment-link"
-                  to="/Kanbas/Courses/1234/Assignments/125"
-                  style={{ fontWeight: 'bold', color: 'black', fontSize: '1rem', textDecoration: 'none' }}
-                >
-                  A2
-                </Link>
-                <div style={{ whiteSpace: 'normal', overflow: 'hidden', fontSize: '0.9rem' }}>
-                  <span className="text-danger">Multiple Modules </span>
-                  <strong>| Not available until</strong> May 13 at 12:00am | 
-                  <strong>Due</strong> May 20 at 11:59pm | 
-                  <span>100 pts</span>
-                </div>
-              </div>
-            </div>
-            <LessonControlButtons />
-          </li>
-
-          <li className="wd-lesson list-group-item p-3 ps-1 d-flex justify-content-between align-items-start">
-            <div className="d-flex align-items-start">
-              <BsGripVertical className="me-2 fs-3" />
-              <FaRegFileAlt className="text-success me-2 fs-4" />
-              <div className="d-flex flex-column">
-                <Link
-                  className="wd-assignment-link"
-                  to="/Kanbas/Courses/1234/Assignments/126"
-                  style={{ fontWeight: 'bold', color: 'black', fontSize: '1rem', textDecoration: 'none' }}
-                >
-                  A3
-                </Link>
-                <div style={{ whiteSpace: 'normal', overflow: 'hidden', fontSize: '0.9rem' }}>
-                  <span className="text-danger">Multiple Modules </span>
-                  <strong>| Not available until</strong> May 20 at 12:00am | 
-                  <strong>Due</strong> May 27 at 11:59pm | 
-                  <span>100 pts</span>
-                </div>
-              </div>
-            </div>
-            <LessonControlButtons />
-          </li>
+          {assignments.filter(assignment => assignment.course === cid).length > 0 ? (
+            assignments
+              .filter(assignment => assignment.course === cid)
+              .map(assignment => (
+                <li key={assignment._id} className="wd-lesson list-group-item p-3 ps-1 d-flex justify-content-between align-items-start">
+                  <div className="d-flex align-items-start">
+                    <BsGripVertical className="me-2 fs-3" />
+                    <FaRegFileAlt className="text-success me-2 fs-4" />
+                    <div className="d-flex flex-column">
+                      <Link
+                        className="wd-assignment-link"
+                        to={`/Kanbas/Courses/${cid}/Assignments/${assignment._id}`} // Use courseId and assignment ID
+                        style={{ fontWeight: 'bold', color: 'black', fontSize: '1rem', textDecoration: 'none' }}
+                      >
+                        {assignment.title}
+                      </Link>
+                      <div style={{ whiteSpace: 'normal', overflow: 'hidden', fontSize: '0.9rem' }}>
+                        <span className="text-danger">Multiple Modules </span>
+                        <strong>| Not available until</strong> TBD | 
+                        <strong>Due</strong> TBD | 
+                        <span>100 pts</span>
+                      </div>
+                    </div>
+                  </div>
+                  <LessonControlButtons />
+                </li>
+              ))
+          ) : (
+            <li className="wd-lesson list-group-item p-3 ps-1 d-flex justify-content-between align-items-start">
+              <span>No data available.</span>
+            </li>
+          )}
         </ul>
       </div>
     </div>
   );
 }
+
