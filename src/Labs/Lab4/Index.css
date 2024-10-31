@@ -1,0 +1,22 @@
+
+#wd-add-element-click,
+#wd-counter-up-click {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 4px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 2px;
+}
+
+#wd-delete-element-click,
+#wd-counter-down-click {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 2px;
+}
