@@ -24,8 +24,8 @@ export default function TodoItem({ todo }: TodoItemProps) {
                 {todo.title}
             </span>
             <div>
-                <button onClick={() => dispatch(setTodo(todo))} className="btn btn-primary btn-sm me-1">Edit</button>
-                <button onClick={() => dispatch(deleteTodo(todo.id))} className="btn btn-danger btn-sm">Delete</button>
+            <button onClick={() => dispatch(deleteTodo(todo.id))} className="btn btn-danger btn-sm float-end">Delete</button>
+                <button onClick={() => dispatch(setTodo(todo))} className="btn btn-primary btn-sm me-1 float-end">Edit</button>
             </div>
         </li>
     );

@@ -15,8 +15,8 @@ export default function TodoForm() {
                 style={{ height: '100%', width: '50%' }} //
             />
             <div>
-                <button onClick={() => dispatch(updateTodo(todo))} className="btn btn-sm me-1" style={{ backgroundColor: 'yellow', borderColor: 'yellow', color: 'black' }} >Update</button>
-                <button onClick={() => dispatch(addTodo(todo))} className="btn btn-success btn-sm">Add</button>
+            <button onClick={() => dispatch(addTodo(todo))} className="btn btn-success btn-sm float-end">Add</button>
+                <button onClick={() => dispatch(updateTodo(todo))} className="btn btn-sm me-1 float-end" style={{ backgroundColor: 'yellow', borderColor: 'yellow', color: 'black' }} >Update</button>
             </div>
         </li>
     );
