@@ -7,8 +7,8 @@ export default function Counter() {
   return (
     <div id="wd-counter-use-state">
       <h2>Counter: {count}</h2>
-      <button onClick={() => setCount(count + 1)} id="wd-counter-up-click">Up</button>
-      <button onClick={() => setCount(count - 1)} id="wd-counter-down-click">Down</button>
+      <button onClick={() => setCount(count + 1)} className="btn btn-success" style={{ margin: '5px'}}>Up</button>
+      <button onClick={() => setCount(count - 1)} className="btn btn-danger" style={{ margin: '5px'}}>Down</button>
       <hr />
     </div>
   );
