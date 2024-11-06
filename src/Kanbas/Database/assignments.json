@@ -1,11 +1,11 @@
 [
-  { "_id": "A101", "title": "Propulsion Assignment", "course": "RS101", "points": 120, "available": "2024-11-06", "due": "2024-11-07" },
-  { "_id": "A102", "title": "Combustion Analysis", "course": "RS101", "points": 85, "available": "2024-11-08", "due": "2024-11-10" },
-  { "_id": "A103", "title": "Nozzle Design Project", "course": "RS101", "points": 100, "available": "2024-11-10", "due": "2024-11-12" },
-  { "_id": "A201", "title": "Aerodynamics Quiz", "course": "RS102", "points": 95, "available": "2024-11-06", "due": "2024-11-08" },
-  { "_id": "A202", "title": "Flow Analysis", "course": "RS102", "points": 130, "available": "2024-11-07", "due": "2024-11-09" },
-  { "_id": "A203", "title": "Heating Analysis", "course": "RS102", "points": 75, "available": "2024-11-09", "due": "2024-11-10" },
-  { "_id": "A301", "title": "Structural Design Task", "course": "RS103", "points": 140, "available": "2024-11-06", "due": "2024-11-07" },
-  { "_id": "A302", "title": "Orbital Calculations", "course": "RS103", "points": 110, "available": "2024-11-07", "due": "2024-11-09" },
-  { "_id": "A303", "title": "Systems Engineering Exam", "course": "RS103", "points": 125, "available": "2024-11-08", "due": "2024-11-11" }
+  { "_id": "A101", "title": "Propulsion Assignment", "course": "RS101", "points": 120, "available": "2024-11-06", "due": "2024-11-07", "description": "DSubmit a link to the landing page of your Web application running on Netlify. The landing page should include your full name and section, a link to the Kanbas application, and links to all relevant source code repositories." },
+  { "_id": "A102", "title": "Combustion Analysis", "course": "RS101", "points": 85, "available": "2024-11-08", "due": "2024-11-10" , "description": "Submit a link to the landing page of your Web application running on Netlify. The landing page should include your full name and section, a link to the Kanbas application, and links to all relevant source code repositories."},
+  { "_id": "A103", "title": "Nozzle Design Project", "course": "RS101", "points": 100, "available": "2024-11-10", "due": "2024-11-12" , "description": "Description"},
+  { "_id": "A201", "title": "Aerodynamics Quiz", "course": "RS102", "points": 95, "available": "2024-11-06", "due": "2024-11-08" , "description": "Submit a link to the landing page of your Web application running on Netlify. The landing page should include your full name and section, a link to the Kanbas application, and links to all relevant source code repositories."},
+  { "_id": "A202", "title": "Flow Analysis", "course": "RS102", "points": 130, "available": "2024-11-07", "due": "2024-11-09" , "description": "DSubmit a link to the landing page of your Web application running on Netlify. The landing page should include your full name and section, a link to the Kanbas application, and links to all relevant source code repositories."},
+  { "_id": "A203", "title": "Heating Analysis", "course": "RS102", "points": 75, "available": "2024-11-09", "due": "2024-11-10" , "description": "Description"},
+  { "_id": "A301", "title": "Structural Design Task", "course": "RS103", "points": 140, "available": "2024-11-06", "due": "2024-11-07", "description": "Submit a link to the landing page of your Web application running on Netlify. The landing page should include your full name and section, a link to the Kanbas application, and links to all relevant source code repositories." },
+  { "_id": "A302", "title": "Orbital Calculations", "course": "RS103", "points": 110, "available": "2024-11-07", "due": "2024-11-09", "description": "Description" },
+  { "_id": "A303", "title": "Systems Engineering Exam", "course": "RS103", "points": 125, "available": "2024-11-08", "due": "2024-11-11", "description": "Submit a link to the landing page of your Web application running on Netlify. The landing page should include your full name and section, a link to the Kanbas application, and links to all relevant source code repositories." }
 ]
