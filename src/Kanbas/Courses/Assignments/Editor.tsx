@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import AssignmentViewer from "./Viewer";
 import { useState } from "react";
 import ProtectedForFaculty from "../../ProtectedForFaculty";
-
+import { useNavigate } from "react-router-dom";
 
 export default function AssignmentEditor() {
+    const navigate = useNavigate();
     const { cid, aid } = useParams();
     const assignment = useSelector((state: any) =>
         state.assignmentsReducer.assignments.find((x: any) => x._id === aid)
@@ -40,6 +41,7 @@ export default function AssignmentEditor() {
         } else {
             dispatch(updateAssignment(new_assignment));
         }
+        
     };
 
     const nameChange = (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value);
@@ -195,7 +197,10 @@ export default function AssignmentEditor() {
                                 <Link to={`/Kanbas/Courses/${cid}/Assignments`} className="btn btn-secondary me-2">Cancel</Link>
                                 <button
                                     className="btn btn-danger"
-                                    onClick={addOrEdit}>
+                                    onClick={() => {
+                                        addOrEdit();
+                                        navigate(`/Kanbas/Courses/${cid}/Assignments`);
+                                    }}>
                                     Save
                                 </button>
                             </div>
