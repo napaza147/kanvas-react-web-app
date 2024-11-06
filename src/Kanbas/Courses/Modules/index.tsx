@@ -8,6 +8,7 @@ import { useParams } from 'react-router';
 import { addModule, editModule, updateModule, deleteModule }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
+import ProtectedForFaculty from "../../ProtectedForFaculty";
 
 
 export default function Modules() {
@@ -19,11 +20,14 @@ export default function Modules() {
 
   return (
     <div className="d-flex flex-column">
+
+<ProtectedForFaculty>
       <ModulesControls setModuleName={setModuleName} moduleName={moduleName} addModule={() => {
           dispatch(addModule({ name: moduleName, course: cid }));
           setModuleName("");
         
       }} />
+      </ProtectedForFaculty>
   
       <ul id="wd-modules" className="list-group rounded-0">
         {modules.filter((module: any) => module.course === cid).length > 0 ? (
@@ -46,6 +50,8 @@ export default function Modules() {
                defaultValue={module.name}/>
       )}
   
+
+  <ProtectedForFaculty>
                   
                   <ModuleControlButtons
         moduleId={module._id}
@@ -54,7 +60,7 @@ export default function Modules() {
         }}
         editModule={(moduleId) => dispatch(editModule(moduleId))} 
 />
-
+</ProtectedForFaculty>
                 </div>
                 {module.lessons && (
                   <ul className="wd-lessons list-group rounded-0">
