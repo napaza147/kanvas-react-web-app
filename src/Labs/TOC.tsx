@@ -36,7 +36,6 @@ export default function TOC() {
           Lab 5
         </a>
 
-
       </li>
       <li className="nav-item">
         <a id="wd-k" href="#/Kanbas" className="nav-link">
@@ -48,6 +47,26 @@ export default function TOC() {
           My GitHub
         </a>
       </li>
+
+      <li className="nav-item">
+        <a id="wd-github-node" href="https://github.com/napaza147/kanbas-node-server-app" className="nav-link">
+          My GitHub's node
+        </a>
+      </li>
+
+      <li className="nav-item">
+        <a id="wd-Render" href="https://kanbas-node-server-app-g41m.onrender.com" className="nav-link">
+          My Render
+        </a>
+      </li>
+
+
+      <li className="nav-item">
+        <a id="wd-Heroku" href="https://kanbas-node-server-app-ivan-4977f906acc5.herokuapp.com" className="nav-link">
+          My Heroku
+        </a>
+      </li>
+
     </ul>
   );
 }

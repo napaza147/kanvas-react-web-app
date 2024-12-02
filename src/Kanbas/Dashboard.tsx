@@ -17,11 +17,15 @@ export default function Dashboard(
     updateCourse: () => void; }) {
 
     const { currentUser } = useSelector((state: any) => state.accountReducer);
+
+
     const { enrollments } = useSelector((state: any) => state.enrollmentReducer);
+
+
+    
     const dispatch = useDispatch();
 
     const [showEnrollment, setEnrollment] = useState(true);
-
     const shownCourses = showEnrollment
       ? courses.filter((course) =>
           enrollments.some((enrollment: Enrollment) =>
