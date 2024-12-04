@@ -61,16 +61,14 @@ export default function Kanbas() {
   };
 
   const fetchCourses = async () => {
-    let courses = [];
     try {
-        courses = await userClient.findMyCourses(); // Successfully fetched courses
-        console.log("Fetched courses: ", courses);
+      const courses = await courseClient.fetchAllCourses();
+      setCourses(courses);
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
-    setCourses(courses); // Setting state after fetching
-    console.log("Courses state after fetch: ", courses);
-};
+  };
+ 
 
   useEffect(() => {
     fetchCourses();
