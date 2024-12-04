@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ProtectedForFaculty from "./ProtectedForFaculty";
-import { addEnrollment, deleteEnrollment } from "../Enrollment/reducer";
+import { addEnrollment, deleteEnrollment, setEnrollments } from "../Enrollment/reducer";
+
+import * as enrollmentClient from "./client";
 
 interface Enrollment {
   user: string;
@@ -23,8 +25,9 @@ export default function Dashboard(
 
   const [showEnrollment, setEnrollment] = useState(true);
   const shownCourses = showEnrollment
-    ? courses.filter((course) =>
-        enrollments.some((enrollment: Enrollment) =>
+    ? courses.filter((course: any) =>
+      enrollments.some(
+        (enrollment: Enrollment) =>
           enrollment.user === currentUser._id &&
           enrollment.course === course._id
         )
@@ -35,29 +38,45 @@ export default function Dashboard(
     setEnrollment(!showEnrollment);
   };
 
-  const addCurrEnrollment = (courseID: string) => {
+  const isEnrolled = (courseID: any) => {
+
+    return enrollments.some((enrollment: Enrollment) =>
+
+      enrollment.user === currentUser._id && enrollment.course === courseID
+
+    );
+
+  };
+
+  const addCurrEnrollment = async (course: any) => {
     const newEnrollment = {
       "_id": new Date().getTime().toString(),
       "user": currentUser._id,
-      "course": courseID
+      "course": course._id,
     };
+    await enrollmentClient.addEnrollment(newEnrollment);
     dispatch(addEnrollment(newEnrollment));
   };
 
-  const isEnrolled = (courseID: string) => {
-    return enrollments.some((enrollment: Enrollment) =>
-      enrollment.user === currentUser._id && enrollment.course === courseID
-    );
-  };
-
-  const removeCurrEnrollment = (courseID: string) => {
-    const removeEnrollment = {
+  const removeCurrEnrollment = async (courseID: any) => {
+      const removeEnrollment = {
       "_id": new Date().getTime().toString(),
       "user": currentUser._id,
-      "course": courseID
+      "course": courseID,
     };
+    await enrollmentClient.deleteEnrollment(removeEnrollment);
     dispatch(deleteEnrollment(removeEnrollment));
   };
+
+
+  const fetchEnrollments = async () => {
+    const enrollments = await enrollmentClient.fetchEnrollments(currentUser._id);
+    dispatch(setEnrollments(enrollments));
+  };
+
+  useEffect(() => {
+    fetchEnrollments();
+  }, [currentUser._id]);
 
   return (
     <div id="wd-dashboard">
@@ -97,23 +116,13 @@ export default function Dashboard(
         <hr />
       </ProtectedForFaculty>
 
-
-
-
-
-
       {/* Published Courses */}
       <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2>
       <hr />
-
-
-
-
-
       
       <div id="wd-dashboard-courses" className="row">
         <div className="row row-cols-1 row-cols-md-5 g-4">
-          {shownCourses.map((course) => (
+          {shownCourses.map((course : any) => (
             <div className="col" key={course._id} style={{ maxWidth: "300px" }}>
               <div className="card rounded-3 overflow-hidden">
                 <div className="card-body">
