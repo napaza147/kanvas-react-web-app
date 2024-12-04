@@ -39,13 +39,9 @@ export default function Dashboard(
   };
 
   const isEnrolled = (courseID: any) => {
-
     return enrollments.some((enrollment: Enrollment) =>
-
       enrollment.user === currentUser._id && enrollment.course === courseID
-
     );
-
   };
 
   const addCurrEnrollment = async (course: any) => {
@@ -130,7 +126,7 @@ export default function Dashboard(
                     to={`/Kanbas/Courses/${course._id}/Home`}
                     className="wd-dashboard-course-link text-decoration-none text-dark"
                   >
-                    <img src={course.image} alt={course.name} width="100%" height={160} />
+                    <img src={`${process.env.REACT_APP_REMOTE_SERVER}/images/${course.image}`} alt={course.name} width="100%" height={160} />
                     <h5 className="wd-dashboard-course-title card-title">{course.name}</h5>
                     <p className="wd-dashboard-course-text card-text" style={{ maxHeight: 100 }}>
                       {course.description}
