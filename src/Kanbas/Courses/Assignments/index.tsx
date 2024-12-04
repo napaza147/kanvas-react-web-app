@@ -7,7 +7,7 @@ import PercentageIndicator from "./PercentageIndicator";
 import * as db from "../../Database";
 import { addAssignment, updateAssignment, deleteAssignment } from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
-import ProtectedForFaculty from "../../ProtectedForFaculty";
+import ProtectedForFaculty from "../../Dashboard/ProtectedForFaculty";
 import { useState } from "react";
 
 

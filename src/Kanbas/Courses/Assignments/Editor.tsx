@@ -5,7 +5,7 @@ import { addAssignment, updateAssignment } from "./reducer";
 import { useDispatch, useSelector } from "react-redux";
 import AssignmentViewer from "./Viewer";
 import { useState } from "react";
-import ProtectedForFaculty from "../../ProtectedForFaculty";
+import ProtectedForFaculty from "../../Dashboard/ProtectedForFaculty";
 import { useNavigate } from "react-router-dom";
 
 export default function AssignmentEditor() {
