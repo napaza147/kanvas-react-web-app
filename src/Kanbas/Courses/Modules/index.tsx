@@ -29,11 +29,31 @@ export default function Modules() {
   };
 
   const createModuleForCourse = async () => {
-    if (!cid) return;
+    if (!cid) {
+      console.error("Course ID (cid) is missing.");
+      return;
+    }
+  
+    if (!moduleName) {
+      console.error("Module name is missing.");
+      return;
+    }
+  
     const newModule = { name: moduleName, course: cid };
-    const module = await coursesClient.createModuleForCourse(cid, newModule);
-    dispatch(addModule(module));
+    console.log("Creating module with data:", newModule);
+  
+    try {
+      const module = await coursesClient.createModuleForCourse(cid, newModule);
+      console.log("Module created successfully:", module);
+  
+      dispatch(addModule(module));
+      console.log("Module added to Redux store.");
+    } catch (error) {
+      console.error("Error creating module:", error);
+      alert("Failed to create module. Please try again.");
+    }
   };
+  
   
   return (
     <div>
