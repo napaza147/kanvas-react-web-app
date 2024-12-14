@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { addAssignment, updateAssignment } from "./reducer";
@@ -10,7 +11,7 @@ export default function AssignmentEditor() {
   const { assignments } = useSelector(
     (state: any) => state.assignmentsReducer || []
   );
-  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const assignment = useMemo(() => {
@@ -75,8 +76,8 @@ export default function AssignmentEditor() {
         ...assignment,
         ...formValues,
       });
-      dispatch(updateAssignment(updatedAssignment));
     }
+    navigate(-1);
   };
 
   return (
@@ -161,6 +162,7 @@ export default function AssignmentEditor() {
         </Link>
         <button className="btn btn-danger" onClick={handleEditAssignment}>
           Save
+
         </button>
       </div>
     </div>
