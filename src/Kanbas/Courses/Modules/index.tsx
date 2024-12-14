@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { addModule, editModule, updateModule, deleteModule, setModules }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
-import AdminRestricted from "../../Common/ProtectedRoutes";
+import {ProtectedFacultyRoute} from "../../Common/ProtectedRoutes";
 import * as coursesClient from "../client";
 import * as modulesClient from "./client";
 
@@ -39,14 +39,14 @@ export default function Modules() {
     <div>
       <ul id="wd-modules" className="list-group rounded-0">
         <div className="mb-1">
-          <AdminRestricted>
+          <ProtectedFacultyRoute>
           <ModulesControls 
           setModuleName={setModuleName} 
           moduleName={moduleName} 
           addModule={
             createModuleForCourse
           } />
-          </AdminRestricted>
+          </ProtectedFacultyRoute>
         </div>
         {modules
           // .filter((module: any) => module.course === cid)

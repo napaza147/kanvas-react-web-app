@@ -1,22 +1,5 @@
 import { useSelector } from "react-redux";
 
-
-export default function ProtectedForFaculty({ children}: { children: any}) {
-  const { currentUser } = useSelector((state: any) => state.accountReducer);
-  if (currentUser && currentUser.role === "ADMIN") {
-    return children;
-  } else {
-    return <></>
-}}
-
-export function FacultyRestricted({ children}: { children: any}) {
-  const { currentUser } = useSelector((state: any) => state.accountReducer);
-  if (currentUser && currentUser.role === "FACULTY") {
-    return children;
-  } else {
-    return <></>
-}}
-
 export function StudentRestricted({ children}: { children: any}) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   if (currentUser && currentUser.role === "STUDENT") {
@@ -25,7 +8,7 @@ export function StudentRestricted({ children}: { children: any}) {
     return <></>
 }}
 
-export function FacultyAndAdminRestricted({ children}: { children: any}) {
+export function ProtectedFacultyRoute({ children}: { children: any}) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   if (currentUser && currentUser.role === "ADMIN" || currentUser.role === "FACULTY") {
     return children;

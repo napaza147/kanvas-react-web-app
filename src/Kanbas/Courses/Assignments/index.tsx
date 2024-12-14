@@ -9,7 +9,7 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { setAssignments, addAssignment, deleteAssignment, editAssignment, updateAssignment } from "./reducer"
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import FacultyRestricted from "../../Common/ProtectedRoutes";
+import { ProtectedFacultyRoute } from "../../Common/ProtectedRoutes";
 import * as assignmentsClient from "./client";
 import * as coursesClient from "../client";
 
@@ -17,7 +17,7 @@ export default function Assignments (){
 
   const { cid } = useParams();
   // const [assignmentName, setAssignmentName] = useState("");
-  const { assignments } = useSelector((state: any) => state.assignmentReducer || []);  // const assignments = db.assignments;
+  const { assignments = []} = useSelector((state: any) => state.assignmentReducer || []);  // const assignments = db.assignments;
   const [assignmentName, setAssignmentName] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -116,12 +116,10 @@ export default function Assignments (){
         </div>
       <ul className="wd-lessons list-group rounded-0">
         {assignments
-          // .filter((assignment: any) => assignment.course === cid)
           .map((assignment: any) => (
             <li className="wd-lesson list-group-item p-3 ps-1 d-flex justify-content-between align-items-center"
                   key={assignment._id}
                   onClick={() => handleEditAssignment(assignment)}
-                  // onClick={() => dispatch(editAssignment(assignment._id))}
                 >
               <div className="d-flex align-items-center">
                 <BsGripVertical className="me-2 fs-3" />
@@ -141,7 +139,7 @@ export default function Assignments (){
               </div>
               <div className="d-flex align-items-center">
                 <LessonControlButtons />
-                <FacultyRestricted >
+                <ProtectedFacultyRoute >
                 <FaTrash
                   className="ms-3 text-danger"
                   style={{ cursor: "pointer" }}
@@ -149,13 +147,8 @@ export default function Assignments (){
                     e.stopPropagation();
                     handleDeleteAssignment(assignment);
                   }}
-                  // onClick={(e) => 
-                  //   {
-                  //     e.stopPropagation();
-                  //     removeAssignment(assignment._id)}
-                  //   }
                 />
-                </FacultyRestricted>
+                </ProtectedFacultyRoute>
               </div>
             </li>
           ))}

@@ -88,12 +88,22 @@ export default function Kanbas() {
     };
   
     const updateCourse = async () => {
-      await courseClient.updateCourse(course);
-      setCourses(courses.map((c) => {
-          if (c._id === course._id) { return course; }
-          else { return c; }
-      })
-    );};
+      try {
+        await courseClient.updateCourse(course); 
+        setCourses(
+          courses.map((c) => {
+            if (c._id === course._id) {
+              return course;
+            } else {
+              return c; // Keep the other courses unchanged
+            }
+          })
+        );
+      } catch (error) {
+        console.error("Error updating course:", error);
+        alert("There was an issue updating the course. Please try again.");
+      }
+    };
   
   
   return (

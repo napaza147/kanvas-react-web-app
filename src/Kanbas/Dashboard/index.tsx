@@ -41,9 +41,11 @@ export default function Dashboard(
             <button className="btn btn-primary float-end" onClick={addNewCourse}>
               Add
             </button>
+            {typeof course._id === "string" && course._id !== "1234" && (
             <button className="btn btn-warning float-end me-2" onClick={updateCourse}>
               Update
             </button>
+    )}
           </div>
         </h5>
         <hr />
@@ -104,7 +106,7 @@ export default function Dashboard(
                     to={`/Kanbas/Courses/${course._id}/Home`}
                     className="wd-dashboard-course-link text-decoration-none text-dark"
                   >
-                    <button className="btn btn-primary">Go</button>
+                    <button className="btn btn-primary">Enter</button>
                   </Link>
 
                   {/* FACULTY EDIT BUTTONS */}
