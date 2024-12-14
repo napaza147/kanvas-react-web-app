@@ -49,18 +49,11 @@ export default function Assignments() {
     }
   };
 
-  const handleDeleteAssignment = async (assignment: {
-    _id: string;
-    course: string;
-    title: string;
-    description: string;
-    availableFrom: string;
-    due: string;
-    points: string;
-  }) => {
+  const handleDeleteAssignment = async (assignment: { _id: string; course: string; title: string; description: string; availableFrom: string; due: string; points: string }) => {
     setAssignmentToDelete(assignment);
     setShowDeleteDialog(true);
   };
+
 
   const confirmDeleteAssignment = async () => {
     if (assignmentToDelete) {
@@ -137,10 +130,18 @@ export default function Assignments() {
                         </Link>
 
                         <FaTrash
-                          className="text-danger me-2 mb-1"
-                          onClick={() => handleDeleteAssignment(assignment._id)}
-                          style={{ cursor: 'pointer' }}
-                        />
+                        className="ms-3 text-danger"
+                        style={{ cursor: "pointer" }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDeleteAssignment(assignment);
+                        }}
+                        // onClick={(e) => 
+                        //   {
+                        //     e.stopPropagation();
+                        //     removeAssignment(assignment._id)}
+                        //   }
+                      />
                       </ProtectedFacultyRoute>
                       <IoEllipsisVertical className="fs-4" />
                     </div>

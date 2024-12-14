@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { addAssignment, updateAssignment } from "./reducer";
 import * as assignmentsClient from "./client";
 import * as coursesClient from "../client";
@@ -76,94 +76,110 @@ export default function AssignmentEditor() {
         ...assignment,
         ...formValues,
       });
+      dispatch(updateAssignment(updatedAssignment));
     }
-    navigate(-1);
+    navigate(`/Kanbas/Courses/${cid}/Assignments`);
   };
 
   return (
-    <div className="container mt-4">
-      <div className="mb-3">
-        <label htmlFor="assignment-name" className="form-label">
-          Assignment Name
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="assignment-name"
-          name="title"
-          value={formValues.title}
-          onChange={handleInputChange}
-        />
-      </div>
+    <div id="assignment-editor" className="container mt-4">
+      <div className="d-flex flex-column w-100">
 
-      <div className="mb-3">
-        <label htmlFor="assignment-description" className="form-label">
-          Description
-        </label>
-        <textarea
-          className="form-control"
-          id="assignment-description"
-          name="description"
-          rows={5}
-          value={formValues.description}
-          onChange={handleInputChange}
-        />
-      </div>
-
-      <div className="mb-3">
-        <label htmlFor="assignment-points" className="form-label">
-          Points
-        </label>
-        <input
-          type="number"
-          className="form-control"
-          id="assignment-points"
-          name="points"
-          value={formValues.points}
-          onChange={handleInputChange}
-        />
-      </div>
-
-      <div className="row mb-3">
-        <div className="col">
-          <label htmlFor="available-from" className="form-label">
-            Available From
-          </label>
-          <input
-            type="datetime-local"
-            className="form-control"
-            id="available-from"
-            name="availableFrom"
-            value={fmtDate(formValues.availableFrom)}
-            onChange={handleInputChange}
-          />
+        <div className="row mb-3">
+          <div className="col-4 text-end">
+            <label htmlFor="assignment-name" className="form-label"><strong>Assignment Name</strong></label>
+          </div>
+          <div className="col-8">
+            <input
+              type="text"
+              id="assignment-name"
+              name="title"
+              className="form-control"
+              value={formValues.title}
+              onChange={handleInputChange}
+            />
+          </div>
         </div>
-        <div className="col">
-          <label htmlFor="due-date" className="form-label">
-            Due Date
-          </label>
-          <input
-            type="datetime-local"
-            className="form-control"
-            id="due-date"
-            name="due"
-            value={fmtDate(formValues.due)}
-            onChange={handleInputChange}
-          />
+
+        <div className="row mb-3">
+          <div className="col-4 text-end">
+            <label htmlFor="assignment-description" className="form-label"><strong>Description</strong></label>
+          </div>
+          <div className="col-8">
+            <textarea
+              id="assignment-description"
+              name="description"
+              className="form-control"
+              rows={5}
+              value={formValues.description}
+              onChange={handleInputChange}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="d-flex justify-content-end">
-        <Link
-          to={`/Kanbas/Courses/${cid}/Assignments`}
-          className="btn btn-secondary me-2"
-        >
-          Cancel
-        </Link>
-        <button className="btn btn-danger" onClick={handleEditAssignment}>
-          Save
+        <div className="row mb-3">
+          <div className="col-4 text-end">
+            <label htmlFor="assignment-points" className="form-label"><strong>Points</strong></label>
+          </div>
+          <div className="col-8">
+            <input
+              type="number"
+              id="assignment-points"
+              name="points"
+              className="form-control"
+              value={formValues.points}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
 
-        </button>
+        <div className="row mb-3">
+          <div className="col-4 text-end">
+            <label htmlFor="available-from" className="form-label"><strong>Available From</strong></label>
+          </div>
+          <div className="col-8">
+            <input
+              type="datetime-local"
+              id="available-from"
+              name="availableFrom"
+              className="form-control"
+              value={fmtDate(formValues.availableFrom)}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+
+        <div className="row mb-3">
+          <div className="col-4 text-end">
+            <label htmlFor="due-date" className="form-label"><strong>Due Date</strong></label>
+          </div>
+          <div className="col-8">
+            <input
+              type="datetime-local"
+              id="due-date"
+              name="due"
+              className="form-control"
+              value={fmtDate(formValues.due)}
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+
+        <div className="d-flex justify-content-end mt-3">
+          <Link
+            to={`/Kanbas/Courses/${cid}/Assignments`}
+            className="btn btn-secondary me-2"
+          >
+            Cancel
+          </Link>
+          <button
+            className="btn btn-danger"
+            onClick={handleEditAssignment}
+          >
+            Save
+          </button>
+        </div>
+
       </div>
     </div>
   );
