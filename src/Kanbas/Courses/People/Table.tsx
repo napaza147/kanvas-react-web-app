@@ -3,13 +3,8 @@ import React, { useState, useEffect } from "react";
 import PeopleDetails from "./Details";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-//import { useParams } from "react-router-dom";
-//import * as db from "../../Database";
 
 export default function PeopleTable({ users = [] }: { users?: any[] }) {
-  //const { cid } = useParams();
-  //const users = db.users; 
-  //const enrollments = db.enrollments; 
   return (
     <div id="wd-people-table">
       <PeopleDetails />

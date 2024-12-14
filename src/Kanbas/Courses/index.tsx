@@ -2,10 +2,10 @@ import CoursesNavigation from "./Navigation";
 import Modules from "./Modules";
 import Home from "./Home";
 import Assignments from "./Assignments";
-import PeopleTable from "./People/Table";
 import AssignmentEditor from "./Assignments/Editor";
 import { FaAlignJustify } from 'react-icons/fa';
 import { Navigate, Route, Routes, useParams, useLocation} from "react-router";
+import PeopleTableEntry from "./People/TableEntry";
 
 
 export default function Courses({ courses }: { courses: any[]; }) {
@@ -26,13 +26,12 @@ export default function Courses({ courses }: { courses: any[]; }) {
         </div>
         <div className="flex-fill">
           <Routes>
-            {/* Keep `cid` in the route */}
             <Route path="/" element={<Navigate to={`/Kanbas/Courses/${cid}/Home`} />} />
             <Route path="Home" element={<Home />} />
             <Route path="Modules" element={<Modules />} />
             <Route path="Assignments" element={<Assignments />} />
             <Route path="Assignments/:aid" element={<AssignmentEditor />} />
-            <Route path="People" element={<PeopleTable />} />
+            <Route path="People" element={<PeopleTableEntry />} />
           </Routes>
         </div>
       </div>
