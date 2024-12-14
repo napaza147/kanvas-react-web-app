@@ -10,16 +10,20 @@ export default function Signin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const signin = async () => {
+    try {
     const user =  await client.signin(credentials);
     if (!user) return;
     dispatch(setCurrentUser(user));
     navigate("/Kanbas/Dashboard");
+    } catch (error: any) {
+      if (error.response && error.response.status === 401) {
+        alert("Invalid username or password. Please try again.");
+      } else {
+        console.error("An unexpected error occurred:", error);
+        alert("Something went wrong. Please try again later.");
+      }
+    }
   };
-
-
-  
-
-
 
   return (
     <div id="wd-signin-screen">
