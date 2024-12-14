@@ -22,6 +22,7 @@ export default function TableEntry() {
           findUsersByCourse(cid);
         }
       }, [cid]);
+
   return (
     <div id="wd-people-table">
       <PeopleDetails />
@@ -37,7 +38,7 @@ export default function TableEntry() {
           </tr>
         </thead>
         <tbody>
-          {users.map((user: any) => (
+        {users.filter((user: any) => user !== null).map((user: any) => (
             <tr key={user._id}>
               <td className="wd-full-name text-nowrap">
                 <Link to={`/Kanbas/Account/Users/${user._id}`} className="text-decoration-none">
